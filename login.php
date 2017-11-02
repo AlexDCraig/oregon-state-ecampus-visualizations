@@ -6,18 +6,16 @@
 	</head>
 <body>
 <h2>User Log In Page</h2>
-<h3>Alex Hoffer, 9/26/2017</h3>
 
-<form method="post" action="verifyLogin.php">
-	<input type="text" name="username" />Username</br/>
-	<input type="password" name="password" />Password</br/>
+<form method="post" action="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/verifyLogin.php">
+	<input type="text" name="email" />email</br/>
+	<input type="password" name="password" />password</br/>
 	<input type="submit" value="Submit">
 </form>	
 
 <br>
-<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/HW1/signup.php">Sign Up</a>
+<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/signup.php">Sign Up</a>
 <br>
-<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/HW1/listusers.php">List Users</a>
 
 <?php
 	include 'connectvarsEECS.php';

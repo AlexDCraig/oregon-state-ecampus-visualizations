@@ -10,25 +10,25 @@
 	}
 
 	// Sanitize inputs.
-	$username = $_POST['username'];
-	$username = mysqli_real_escape_string($conn, $username);
+	$email = $_POST['email'];
+	$email = mysqli_real_escape_string($conn, $email);
 	$password = $_POST['password'];
 	$password = mysqli_real_escape_string($conn, $password);
 
-	if ($username == NULL)
+	if ($email == NULL)
 		exit("No username provided");
 
 	if ($password == NULL)
 		exit("No password provided");
 
-	$sql = "SELECT * FROM Users WHERE username='$username' AND password=MD5('$password')";
+	$sql = "SELECT * FROM UserFinal WHERE email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
-	
+
 	if($row = mysqli_fetch_assoc($result))
 		echo "Successfully logged in.";
 	
 	else
-		echo "Username/password combination not found.";
+		echo "Email/password combination not found.";
 	
 	mysqli_free_result($result);
 	mysqli_close($conn);
