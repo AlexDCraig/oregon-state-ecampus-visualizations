@@ -60,6 +60,11 @@
     background-color: #3e8e41;
 }
 
+.onlineClass {
+	margin: auto;
+	width: 50%;
+}
+
 header {
 	
 	height: 20px; 
