@@ -1,3 +1,6 @@
+<?php include('session.php');
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,13 +47,40 @@
 	$sql = "SELECT Title FROM CourseFinal";
 	$result = mysqli_query($conn, $sql);
 
-	echo "<div style='margin:auto; width: 50%;'><select class = 'onlineClass'>";
+	echo "<div style='margin:auto; width: 50%; float: center;'>
+	<form action='vote.php' method='post'>
+	<select name='onlineClass'>";
 
 	while($row = mysqli_fetch_assoc($result))
 	{
-		echo "<option value>" . $row["Title"] . "</option>";
+		echo "<option value='" . $row["Title"];
+		echo "'>" . $row["Title"];
+		echo "</option>";
 	}
 
-	echo "</select></div>";
+	echo "</select>
+	
+	<select name='metric'>
+	
+	<option value='Difficulty'>Difficulty</option>
+	<option value='Quality of Online Lectures'>Quality of Online Lectures</option>
+	<option value='Dependence on Prior Knowledge'>Dependence on Prior Knowledge</option>
+
+	</select>
+
+	<select name='castVote'>
+
+	<option value='0'>0</option>
+	<option value='1'>1</option>
+	<option value='2'>2</option>
+	<option value='3'>3</option>
+	<option value='4'>4</option>
+	<option value='5'>5</option>
+
+	</select>
+
+	<input type='submit' name='submit' value='Vote' />
+	</form>
+	</div>";
 
 ?>

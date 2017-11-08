@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-
-<?php
+<?php		
 // change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
+
+	session_start();
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$conn) {
@@ -25,7 +25,12 @@
 	$result = mysqli_query($conn, $sql);
 
 	if($row = mysqli_fetch_assoc($result))
-		echo "Successfully logged in.";
+	{
+		//echo "Successfully logged in.";
+		$_SESSION['email']=$email;
+		$_SESSION['password']=$password;
+		header("location: home.php");
+	}
 	
 	else
 		echo "Email/password combination not found.";
