@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vote</title>
+		<title>Home</title>
 		<link rel="stylesheet" href="index.css">
 	</head>
 <body>
@@ -38,94 +38,41 @@
 </div>
 </div>
 
-<div align="center">
-<div class="titleHeader">
-<h2>Vote on an OSU Online CS Class!</h2>
-</div>
-</div>
 </body>
 </html>
+
 
 <?php
 // change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
+	include 'session.php';
 	
-	if (!$email)
-	{
-		echo "<div style='margin:auto; width: 50%; float: center;'>You're not logged in. Please log in to vote.</div>";
-		exit();
-	}
-
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$conn) {
 		die('Could not connect: ' . mysql_error());
 	}
 
-	$sql = "SELECT Title FROM CourseFinal";
-	$result = mysqli_query($conn, $sql);
-
-	echo "<div align='center'>";
-	echo "<div style='margin:auto; width: 50%; float: center; align:center;'>
-	<form action='vote.php' method='post'>
-	<select name='onlineClass'>";
-
-	while($row = mysqli_fetch_assoc($result))
+	// Sanitize inputs.
+	$comment = $_POST['comment'];
+	$comment = mysqli_real_escape_string($conn, $comment);
+	
+	if (!$email)
 	{
-		echo "<option value='" . $row["Title"];
-		echo "'>" . $row["Title"];
-		echo "</option>";
+		echo "<h3 align='center'>You must be logged in to post a comment.</h3>";
+		exit();
+	}
+	
+	$query = "INSERT INTO CommentFinal(User_Email, Message_Content, Course_Title, Associated_DB_ID) VALUES ('$email', '$comment', '$coursetitle', $dbid)";
+
+	if (mysqli_query($conn, $query))
+	{
+		echo "<h3 align='center'>Your comment has been posted.</h3>";
 	}
 
-	echo "</select> <br>
+	else {
+		$error = mysqli_error($conn);
+		echo $error;
+	}
 	
-	Difficulty
-
-	<select name='castVoteDif'>
-
-	<option value='0'>0</option>
-	<option value='1'>1</option>
-	<option value='2'>2</option>
-	<option value='3'>3</option>
-	<option value='4'>4</option>
-	<option value='5'>5</option>
-
-	</select>
-
-	<br>
-
-	Quality of Online Lectures
-	
-	<select name='castVoteQual'>
-
-	<option value='0'>0</option>
-	<option value='1'>1</option>
-	<option value='2'>2</option>
-	<option value='3'>3</option>
-	<option value='4'>4</option>
-	<option value='5'>5</option>
-
-	</select>
-
-	<br>
-
-	Dependence on Prior Knowledge
-
-	<select name='castVoteDep'>
-
-	<option value='0'>0</option>
-	<option value='1'>1</option>
-	<option value='2'>2</option>
-	<option value='3'>3</option>
-	<option value='4'>4</option>
-	<option value='5'>5</option>
-
-	</select>
-
-
-	<br>
-
-	<input type='submit' name='submit' value='Vote' />
-	</form>
-	</div></div>";
-
+	mysqli_close($conn);
 ?>

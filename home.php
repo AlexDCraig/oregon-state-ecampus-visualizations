@@ -9,7 +9,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width="100%">
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -42,9 +42,10 @@
 </div>
 </div>
 
-<div id="OSUimage">
+<div id="OSUimage" align="center" height="50px">
 <img src="OSU.jpg" alt="Oregon State Online CS">
 </div>
 
+<h3 align="center">CS340 Final Project by Alex Hoffer and Austin Sanders</h3>
 </body>
 </html>

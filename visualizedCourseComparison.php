@@ -6,7 +6,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width=100%>
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="titleHeader">
-<h2>Visualize Differences between OSU Online CS Classes!</h2>
+<h2 align="center">Visualize Differences between OSU Online CS Classes!</h2>
 </div>
 
 </body>
@@ -52,8 +52,8 @@
 	}
 	$sql = "SELECT Title FROM CourseFinal";
 	$result = mysqli_query($conn, $sql);
-	echo "<div style='margin:auto; width: 50%; float: center;'>
-	Class 1...................Class 2
+	echo "<div align='center'><div style='margin:auto; width: 50%; float: center;'>
+	Class 1           Class 2
 	<form action='visualize.php' method='post'>
 	<select name='onlineClass1'>";
 	while($row = mysqli_fetch_assoc($result))
@@ -78,6 +78,6 @@
 	echo "</select><br><br>
 	<input type='submit' name='submit' value='Visualize!' />
 	</form>
-	</div>";
+	</div></div>";
 ?>
 

@@ -8,7 +8,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width="100%">
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -52,6 +52,7 @@
 		die('Could not connect: ' . mysql_error());
 	}
 	if (isset($_POST['submit'])) {
+
 		$selectedClass = $_POST['onlineClass'];
 	
 		$sql = "SELECT DB_ID FROM DiscussionBoardFinal WHERE Course_title = '$selectedClass'";
@@ -59,6 +60,9 @@
 	
 		$row = mysqli_fetch_assoc($result);
 		$discBoardID = $row["DB_ID"];
+
+		$_SESSION['dbid'] = $discBoardID;
+		$_SESSION['coursetitle'] = $selectedClass;
 
 		echo "<h3>Discussion Board for $selectedClass</h3>";
 
@@ -82,7 +86,9 @@
 
 		echo "<h4>Post Message</h4>";
 	
-		echo "<textarea rows='4' cols='50'></textarea>";
+		echo "<form action='post.php' method='post'>";
+		echo "<textarea rows='4' cols='50' placeholder='Enter a comment here.' name='comment'></textarea>";
+		echo "<br><input type='submit'></form>";		
 
 		mysqli_free_result($result);
 		mysqli_close($conn);

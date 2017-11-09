@@ -8,7 +8,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width=100%>
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>

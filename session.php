@@ -11,6 +11,9 @@
 
 	$email = $_SESSION['email'];
 	$password = $_SESSION['password'];
+	$dbid = $_SESSION['dbid'];
+	$coursetitle = $_SESSION['coursetitle'];
+
 
 	mysqli_close($conn);
 ?>

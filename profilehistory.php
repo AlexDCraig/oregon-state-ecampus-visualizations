@@ -8,7 +8,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width=100%>
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -108,6 +108,43 @@
 
 		echo "</table>";
 		echo "</div>";
+
+		$query = "SELECT Message_Content, Course_Title FROM CommentFinal WHERE User_Email = '$email'";
+		$result = mysqli_query($conn, $query);
+		
+
+		$courseTitles = array();
+		$courseTitleCounter = 0;
+		$contents = array();
+		$contentsCounter = 0;
+
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			$courseTitles[$courseTitleCounter] = $row["Course_Title"];
+			$courseTitleCounter = $courseTitleCounter + 1;
+
+			$contents[$contentsCounter] = $row["Message_Content"];
+			$contentsCounter = $contentsCounter + 1;
+		}
+
+		echo "<div><br><br>";
+		echo "<table><caption>Post History</caption>";
+		echo "<tr><th>Course Title</th><th>Comment</th></tr>";
+		
+		for ($x = 0; $x < $courseTitleCounter; $x++)
+		{
+			echo "<tr>";
+			echo "<td>";
+			echo "" . $courseTitles[$x];
+			echo "</td>";
+			echo "<td>";
+			echo "" . $contents[$x];
+			echo "</td>";
+			echo "</tr>";
+		}
+
+		echo "</table>";
+		echo "</div><br><br>";
 	}
 
 	else

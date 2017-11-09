@@ -9,7 +9,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width=100%>
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -40,15 +40,14 @@
 
 <div class="titleHeader">
 
-
-
-
+<div align="center">
 <h2>User Sign Up Page</h2>
 <form method="post" action="insert.php">
 	<input type="text" name="email" />Email</br/>
 	<input type="password" name="password" />Password</br/>
 	<input type="submit" value="Submit">
 </form>	
+</div>
 </div>
 
 <br>
@@ -62,7 +61,7 @@
 	}
 
 	if ($email)
-		echo "<br>You're already logged in.";
+		echo "<br><h3 align='center'>You're already logged in.</h3>";
 
 	mysqli_close($conn);
 

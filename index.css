@@ -1,16 +1,16 @@
-.navHeader {
-	margin: auto;
+#navHeader {
 	width: 100%;
 }
 
 .titleHeader {
 	margin: auto;
-	width: 100%;
+	width: 0%;
 }
 
 #OSUimage {
 	margin: auto;
 	width: 50%;	
+	height: 100px;
 }
 
 /* Dropdown Button */

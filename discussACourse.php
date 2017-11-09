@@ -8,7 +8,7 @@
 	</head>
 <body>
 
-<div class="navHeader">
+<div class="navHeader" align="center" width="100">
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -54,7 +54,7 @@
 
 	$sql = "SELECT Title FROM CourseFinal";
 	$result = mysqli_query($conn, $sql);
-	echo "<div style='margin:auto; width: 50%; float: center; align:right'>
+	echo "<div align='center'><div style='margin:auto; width: 50%; float: center; align:right'>
 	<form action='discuss.php' method='post'>
 	<select name='onlineClass'>";
 	while($row = mysqli_fetch_assoc($result))
@@ -68,6 +68,6 @@
 	<br>
 	<input type='submit' name='submit' value='Go to board' />
 	</form>
-	</div>";
+	</div></div>";
 	
 ?>
