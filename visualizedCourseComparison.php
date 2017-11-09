@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include('session.php'); ?>
 <html>
 	<head>
 		<title>Visualizations</title>
@@ -50,7 +50,54 @@ var chart = c3.generate({
       ]
     }
 });
+
+function hello()
+{
+	var x = document.getElementById("frm1");
+	console.log(x.elements[1]);
+	console.log("Here");
+}
 </script>
 
 </body>
 </html>
+
+<?php
+// change the value of $dbuser and $dbpass to your username and password
+	include 'connectvarsEECS.php'; 
+	
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	if (!$conn) {
+		die('Could not connect: ' . mysql_error());
+	}
+	$sql = "SELECT Title FROM CourseFinal";
+	$result = mysqli_query($conn, $sql);
+	echo "<div style='margin:auto; width: 50%; float: center;'>
+	Class 1...................Class 2
+	<form action='visualize.php' method='post'>
+	<select name='onlineClass1'>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo "<option value='" . $row["Title"];
+		echo "'>" . $row["Title"];
+		echo "</option>";
+	}
+	echo "</select>"; 
+
+	$sql = "SELECT Title FROM CourseFinal";
+	$result = mysqli_query($conn, $sql);
+	
+	echo "
+	<select name='onlineClass2'>";
+	while($row = mysqli_fetch_assoc($result))
+	{
+		echo "<option value='" . $row["Title"];
+		echo "'>" . $row["Title"];
+		echo "</option>";
+	}
+	echo "</select><br><br>
+	<input type='submit' name='submit' value='Visualize!' />
+	</form>
+	</div>";
+?>
+
