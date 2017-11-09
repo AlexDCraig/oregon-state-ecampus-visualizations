@@ -35,39 +35,56 @@
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/visualizedCourseComparison.php">Visualized Course Comparison</a></button>
 </div>
+</div>
 
 <div class="titleHeader">
-<h2>Select a course to discuss</h2>
-</div>
 </div>
 
 </body>
 </html>
 
 <?php
-	include 'connectvarsEECS.php'; 	
+// change the value of $dbuser and $dbpass to your username and password
+	include 'connectvarsEECS.php'; 
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$conn) {
 		die('Could not connect: ' . mysql_error());
 	}
+	if (isset($_POST['submit'])) {
+		$selectedClass = $_POST['onlineClass'];
+	
+		$sql = "SELECT DB_ID FROM DiscussionBoardFinal WHERE Course_title = '$selectedClass'";
+		$result = mysqli_query($conn, $sql);
+	
+		$row = mysqli_fetch_assoc($result);
+		$discBoardID = $row["DB_ID"];
 
-	$sql = "SELECT Title FROM CourseFinal";
-	$result = mysqli_query($conn, $sql);
-	echo "<div style='margin:auto; width: 50%; float: center; align:right'>
-	<form action='discuss.php' method='post'>
-	<select name='onlineClass'>";
-	while($row = mysqli_fetch_assoc($result))
-	{
-		echo "<option value='" . $row["Title"];
-		echo "'>" . $row["Title"];
-		echo "</option>";
+		echo "<h3>Discussion Board for $selectedClass</h3>";
+
+		$sql = "SELECT * FROM CommentFinal WHERE Associated_DB_ID = $discBoardID";
+		$result = mysqli_query($conn, $sql);
+
+		echo "<table>";
+
+		echo "<tr><th>Timestamp</th><th>User Email</th><th>Message</th></tr>";
+
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			echo "<tr>";
+			echo "<td>" . $row["Timestamp"] . "</td>";
+			echo "<td>" . $row["User_Email"] . "</td>";
+			echo "<td>" . $row["Message_Content"] . "</td>";	
+			echo "</tr>";
+		}
+
+		echo "</table>";
+
+		echo "<h4>Post Message</h4>";
+	
+		echo "<textarea rows='4' cols='50'></textarea>";
+
+		mysqli_free_result($result);
+		mysqli_close($conn);
 	}
-	echo "</select> <br>
-	
-	<br>
-	<input type='submit' name='submit' value='Go to board' />
-	</form>
-	</div>";
-	
 ?>
