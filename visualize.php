@@ -65,6 +65,19 @@
 		$course1 = $_POST['onlineClass1'];
 		$course2 = $_POST['onlineClass2'];
 
+		$course1NumVotes;
+		$course2NumVotes;
+
+		$sql = "SELECT COUNT(*) AS Count FROM CourseStatsFinal WHERE Course_Title = '$course1'";
+		$quer = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($quer);
+		$course1NumVotes = $row["Count"];
+
+		$sql = "SELECT COUNT(*) AS Count FROM CourseStatsFinal WHERE Course_Title = '$course2'";
+		$quer = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($quer);
+		$course2NumVotes = $row["Count"];
+
 		$course1AvgDiffQ;
 		$sql = "SELECT AVG(Difficulty) AS Average FROM CourseStatsFinal WHERE Course_Title = '$course1'";
 		$course1AvgDiffQ = mysqli_query($conn, $sql);
@@ -103,7 +116,7 @@
 
 		// Table 1, Class 1
 		echo "<br><table id='class1' style='width:40%'>
-		<caption>$course1 Averages of Votes</caption>
+		<caption>$course1 Averages of Votes (number of Votes total = $course1NumVotes)</caption>
 		<tr>
 			<th>Difficulty</th>
 			<th>Quality of Online Lectures</th>
@@ -119,7 +132,7 @@
 
 		// Table 2, Class 2
 		echo "<table id='class2' style='width:40%'>
-		<caption>$course2 Averages of Votes</caption>
+		<caption>$course2 Averages of Votes (number of Votes total = $course2NumVotes)</caption>
 		<tr>
 			<th>Difficulty</th>
 			<th>Quality of Online Lectures</th>
