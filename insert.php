@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 // change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
@@ -35,7 +33,8 @@
 	$query = "INSERT INTO UserFinal (email, password) VALUES ('$email', '$password')";
 
 	if (mysqli_query($conn, $query)) {
-		echo "Record added.";
+		//echo "Record added.";
+		header("location: login.php");
 	}
 
 	else {

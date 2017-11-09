@@ -1,6 +1,7 @@
 <?php		
 // change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
+	include 'session.php';
 
 	session_start();
 	
