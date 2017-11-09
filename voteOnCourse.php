@@ -58,17 +58,11 @@
 		echo "</option>";
 	}
 
-	echo "</select>
+	echo "</select> <br>
 	
-	<select name='metric'>
-	
-	<option value='Difficulty'>Difficulty</option>
-	<option value='Quality of Online Lectures'>Quality of Online Lectures</option>
-	<option value='Dependence on Prior Knowledge'>Dependence on Prior Knowledge</option>
+	Difficulty
 
-	</select>
-
-	<select name='castVote'>
+	<select name='castVoteDif'>
 
 	<option value='0'>0</option>
 	<option value='1'>1</option>
@@ -78,6 +72,39 @@
 	<option value='5'>5</option>
 
 	</select>
+
+	<br>
+
+	Quality of Online Lectures
+	
+	<select name='castVoteQual'>
+
+	<option value='0'>0</option>
+	<option value='1'>1</option>
+	<option value='2'>2</option>
+	<option value='3'>3</option>
+	<option value='4'>4</option>
+	<option value='5'>5</option>
+
+	</select>
+
+	<br>
+
+	Dependence on Prior Knowledge
+
+	<select name='castVoteDep'>
+
+	<option value='0'>0</option>
+	<option value='1'>1</option>
+	<option value='2'>2</option>
+	<option value='3'>3</option>
+	<option value='4'>4</option>
+	<option value='5'>5</option>
+
+	</select>
+
+
+	<br>
 
 	<input type='submit' name='submit' value='Vote' />
 	</form>

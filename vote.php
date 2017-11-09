@@ -1,6 +1,38 @@
 <?php include('session.php');
 ?>
 
+<html>
+	<head>
+		<title>Home</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+<body>
+
+<div class="navHeader">
+<div class="dropdown">
+	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
+</div>
+
+<!-- <a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/account.php">Account</a> !-->
+<div class="dropdown">
+	<button class="dropbtn">Account</button>
+	<div class="dropdown-content">
+		<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/login.php">Login</a>
+		<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/signup.php">Signup</a>
+	</div>
+</div>
+
+<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/voteOnCourse.php">Vote on Course</a>
+<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/discussACourse.php">Discuss a Course</a>
+<a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/visualizedCourseComparison.php">Visualized Course Comparison</a>
+</div>
+
+<div class="titleHeader">
+</div>
+
+</body>
+</html>
+
 <?php
 // change the value of $dbuser and $dbpass to your username and password
 	include 'connectvarsEECS.php'; 
@@ -12,19 +44,31 @@
 
 	if (isset($_POST['submit'])) {
 		$selectedClass = $_POST['onlineClass'];
-		$selectedMetric = $_POST['metric'];
-		$castVote = $_POST['castVote'];
+		$difVote = $_POST['castVoteDif'];
+		$qualVote = $_POST['castVoteQual'];
+		$depVote = $_POST['castVoteDep'];
 		//$email
-	
+		
 		$result;
 
-		if ($selectedMetric == 'Difficulty')
-		{		
-			$sql = "INSERT INTO CourseStatsFinal VALUES ('$email', '$selectedClass', $castVote, NULL, NULL)";
+		$sql = "INSERT INTO CourseStatsFinal VALUES ('$email', '$selectedClass', '$difVote', '$qualVote', '$depVote')";
+		$result = mysqli_query($conn, $sql);
+
+		// This user has already voted on the course. So, update their previous vote.
+		if (!$result)
+		{
+			$sql = "UPDATE CourseStatsFinal " . "SET Difficulty = '$difVote', Quality = '$qualVote', Dependence = '$depVote' " . "WHERE User_Email = '$email' AND Course_Title = '$selectedClass'";
 			$result = mysqli_query($conn, $sql);
+			echo "<h4 style='text-align:center;'>";
+			echo $email . " has already voted on $selectedClass. Their previous vote has been updated to reflect what they just voted.";
+			echo "</h4>";
+		
 		}
 
-		//else
+		else
+		{
+			echo "<h4 style='text-align:center;'>Congrats, $email! You just voted on $selectedClass.</h4>";
+		}
 
 		mysqli_free_result($result);
 		mysqli_close($conn);
