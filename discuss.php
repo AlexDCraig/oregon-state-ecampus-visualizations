@@ -88,7 +88,7 @@
 
 		echo "<h3>Discussion Board for $selectedClass</h3>";
 
-		$sql = "SELECT * FROM CommentFinal WHERE Associated_DB_ID = $discBoardID";
+		$sql = "SELECT Timestamp, User_Email, Message_Content FROM CommentFinal C, DiscussionBoardFinal D WHERE C.Associated_DB_ID = D.DB_ID AND D.DB_ID IN (SELECT D1.DB_ID FROM DiscussionBoardFinal D1 WHERE Course_title = '$selectedClass')";
 		$result = mysqli_query($conn, $sql);
 
 		echo "<table>";

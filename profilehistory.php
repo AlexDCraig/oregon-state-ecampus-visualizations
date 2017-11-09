@@ -54,7 +54,7 @@
 
 	if ($email)
 	{
-		$query = "SELECT Course_Title, Difficulty, Quality, Dependence FROM CourseStatsFinal WHERE User_Email = '$email'";
+		$query = "SELECT Course_Title, Difficulty, Quality, Dependence FROM CourseStatsFinal, UserFinal WHERE User_Email = '$email' AND User_Email = email";
 		$result = mysqli_query($conn, $query);
 
 		$courseTitles = array();
@@ -109,7 +109,7 @@
 		echo "</table>";
 		echo "</div>";
 
-		$query = "SELECT Message_Content, Course_Title FROM CommentFinal WHERE User_Email = '$email'";
+		$query = "SELECT C.Message_Content, C.Course_Title FROM CommentFinal C, UserFinal U WHERE C.User_Email = '$email' AND C.User_Email = U.email";
 		$result = mysqli_query($conn, $query);
 		
 
