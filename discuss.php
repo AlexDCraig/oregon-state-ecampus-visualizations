@@ -53,6 +53,28 @@
 	}
 	if (isset($_POST['submit'])) {
 
+		echo "
+			<script type= 'text/javascript'>
+			function createCookie(name, value, days)
+			{
+				 var expires = '';
+    				if (days) {
+        				var date = new Date();
+        				date.setTime(date.getTime() + (days*24*60*60*1000));
+        				expires = '; expires=' + date.toUTCString();
+    				}
+    				document.cookie = name + '=' + value + expires + '; path=/';	
+			}
+
+			function deleter(m)
+			{
+				console.log(m);
+				createCookie('time', m, 7);
+				window.location = 'delete.php';
+			}
+			</script>
+		";
+
 		$selectedClass = $_POST['onlineClass'];
 	
 		$sql = "SELECT DB_ID FROM DiscussionBoardFinal WHERE Course_title = '$selectedClass'";
@@ -79,6 +101,7 @@
 			echo "<td>" . $row["Timestamp"] . "</td>";
 			echo "<td>" . $row["User_Email"] . "</td>";
 			echo "<td>" . $row["Message_Content"] . "</td>";	
+			echo "<td><button id='" . $row["Timestamp"] . "' onClick='deleter(this.id)'>Delete Comment</button></td>";
 			echo "</tr>";
 		}
 
