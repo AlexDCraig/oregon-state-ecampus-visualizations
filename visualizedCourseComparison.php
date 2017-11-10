@@ -53,7 +53,10 @@
 	$sql = "SELECT Title FROM CourseFinal";
 	$result = mysqli_query($conn, $sql);
 	echo "<div align='center'><div style='margin:auto; width: 50%; float: center;'>
-	Class 1           Class 2
+	<div>
+	<h4>Class 1/Class 2</h4> 
+	</div>
+	<div align='center'>
 	<form action='visualize.php' method='post'>
 	<select name='onlineClass1'>";
 	while($row = mysqli_fetch_assoc($result))
@@ -78,6 +81,7 @@
 	echo "</select><br><br>
 	<input type='submit' name='submit' value='Visualize!' />
 	</form>
+	</div>
 	</div></div>";
 ?>
 

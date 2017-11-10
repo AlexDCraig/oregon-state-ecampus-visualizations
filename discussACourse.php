@@ -37,7 +37,7 @@
 </div>
 
 <div class="titleHeader">
-<h2>Select a course to discuss</h2>
+<h2 align='center'>Select a course to discuss</h2>
 </div>
 </div>
 

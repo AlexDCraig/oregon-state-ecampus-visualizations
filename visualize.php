@@ -115,7 +115,7 @@
 		$course2AvgDepR = $row["Average"];
 
 		// Table 1, Class 1
-		echo "<br><table id='class1' style='width:40%'>
+		echo "<br><div><table id='class1'>
 		<caption>$course1 Averages of Votes (number of Votes total = $course1NumVotes)</caption>
 		<tr>
 			<th>Difficulty</th>
@@ -131,7 +131,7 @@
 		";
 
 		// Table 2, Class 2
-		echo "<table id='class2' style='width:40%'>
+		echo "<table id='class2'>
 		<caption>$course2 Averages of Votes (number of Votes total = $course2NumVotes)</caption>
 		<tr>
 			<th>Difficulty</th>
@@ -143,7 +143,7 @@
 			<td>$course2AvgQualR</td>
 			<td>$course2AvgDepR</td>
 		</tr>
-		</table>
+		</table></div>
 		";
 
 

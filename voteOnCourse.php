@@ -126,7 +126,7 @@
 
 
 	<br>
-
+	 <br>
 	<input type='submit' name='submit' value='Vote' /> 		
 	<button id='myBtn' type='button' onclick='instructions();'>Help</button>
 	</form>
