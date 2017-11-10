@@ -61,7 +61,7 @@
 		
 		$result;
 
-		$sql = "INSERT INTO CourseStatsFinal VALUES ('$email', '$selectedClass', '$difVote', '$qualVote', '$depVote')";
+		$sql = "INSERT INTO CourseStatsFinal (User_Email, Course_Title, Difficulty, Quality, Dependence) VALUES ('$email', '$selectedClass', '$difVote', '$qualVote', '$depVote')";
 		$result = mysqli_query($conn, $sql);
 
 		// This user has already voted on the course. So, update their previous vote.

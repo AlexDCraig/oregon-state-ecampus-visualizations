@@ -52,7 +52,7 @@
 	
 	if (!$email)
 	{
-		echo "<div style='margin:auto; width: 50%; float: center;'>You're not logged in. Please log in to vote.</div>";
+		echo "<h4 align='center'>You're not logged in. Please log in to vote.</h4>";
 		exit();
 	}
 
