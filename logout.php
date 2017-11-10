@@ -34,6 +34,11 @@ if (!$email)
 <div class='dropdown'>
 	<button class='dropbtn'><a href='http://web.engr.oregonstate.edu/~hoffera/cs340/Final/visualizedCourseComparison.php'>Visualized Course Comparison</a></button>
 </div>
+
+<div class="dropdown">
+<button class="dropbtn"><a href="rankings.php">Course Classifications</a>
+</button>
+</div>
 </div>
 
 	<h3 align='center'>Can't log out because you're not logged in.</h3></body></html>";
