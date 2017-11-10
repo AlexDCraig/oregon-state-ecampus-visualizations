@@ -46,6 +46,8 @@
 
 <?php
 	include 'connectvarsEECS.php'; 	
+
+	// Post a list of possible courses to discuss. Let the user select a course and navigate to that course's discussion board.
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if (!$conn) {

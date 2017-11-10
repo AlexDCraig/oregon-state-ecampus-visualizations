@@ -44,7 +44,8 @@
 </html>
 
 <?php
-// change the value of $dbuser and $dbpass to your username and password
+	// A discussion board for the course the user selected on the previous page.
+
 	include 'connectvarsEECS.php'; 
 	
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -52,6 +53,8 @@
 		die('Could not connect: ' . mysql_error());
 	}
 	if (isset($_POST['submit'])) {
+
+		// If the user wants to delete a comment, store that comment's unique id into a cookie for use so we can properly delete it on the next page.
 
 		echo "
 			<script type= 'text/javascript'>
@@ -74,6 +77,8 @@
 			}
 			</script>
 		";
+
+		// Post all of the discussion posts related to the course that was selected.
 
 		$selectedClass = $_POST['onlineClass'];
 	
