@@ -43,9 +43,9 @@
 <h2>User Log In Page</h2>
 
 <form method="post" action="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/verifyLogin.php">
-	<input type="text" name="email" />Email</br/></br/>
-	<input type="password" name="password" />Password</br/>
-	<br><input type="submit" value="Submit">
+	<input type="text" name="email" /> Email</br/></br/>
+	<input type="password" name="password" /> Password</br/>
+	<br><input type="submit" value="Log in">
 </form>	
 </div>
 </body>

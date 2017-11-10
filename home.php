@@ -9,7 +9,7 @@
 	</head>
 <body>
 
-<div class="navHeader" align="center" width="100%">
+<div class="navHeader" align="center" width="100%"> 
 <div class="dropdown">
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/home.php">Home</a></button>
 </div>
@@ -37,15 +37,20 @@
 	<button class="dropbtn"><a href="http://web.engr.oregonstate.edu/~hoffera/cs340/Final/visualizedCourseComparison.php">Visualized Course Comparison</a></button>
 </div>
 
+</div>
+
+<div style="width=100%">
 <div class="titleHeader">
-<h2>Vote, Discuss, and Visualize Differences between OSU Online CS Classes!</h2>
+<h2 align="center">Vote, Discuss, and Visualize Differences between OSU Online CS Classes!</h2>
 </div>
 </div>
+
+
+<h3 align="center">CS340 Final Project by Alex Hoffer and Austin Sanders</h3>
 
 <div id="OSUimage" align="center" height="50px">
 <img src="OSU.jpg" alt="Oregon State Online CS">
 </div>
 
-<h3 align="center">CS340 Final Project by Alex Hoffer and Austin Sanders</h3>
 </body>
 </html>

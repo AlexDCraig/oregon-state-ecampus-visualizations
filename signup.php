@@ -43,9 +43,9 @@
 <div align="center">
 <h2>User Sign Up Page</h2>
 <form method="post" action="insert.php">
-	<input type="text" name="email" />Email</br/>
-	<input type="password" name="password" />Password</br/>
-	<input type="submit" value="Submit">
+	<input type="text" name="email" /> Email</br/></br/>
+	<input type="password" name="password" /> Password</br/>
+	<br><input type="submit" value="Sign up">
 </form>	
 </div>
 </div>

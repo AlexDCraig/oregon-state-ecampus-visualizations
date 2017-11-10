@@ -37,7 +37,7 @@
 </div>
 
 <div class="titleHeader">
-<h2>Profile History</h2>
+<h2 align="center">Profile History</h2>
 </div>
 </div>
 

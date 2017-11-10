@@ -40,7 +40,7 @@
 
 <div align="center">
 <div class="titleHeader">
-<h2>Vote on an OSU Online CS Class!</h2>
+<h2 align="center">Vote on an OSU Online CS Class!</h2>
 </div>
 </div>
 </body>
@@ -67,6 +67,9 @@
 	echo "<div align='center'>";
 	echo "<div style='margin:auto; width: 50%; float: center; align:center;'>
 	<form action='vote.php' method='post'>
+	
+	Class 
+	
 	<select name='onlineClass'>";
 
 	while($row = mysqli_fetch_assoc($result))
@@ -124,8 +127,53 @@
 
 	<br>
 
-	<input type='submit' name='submit' value='Vote' />
+	<input type='submit' name='submit' value='Vote' /> 		
+	<button id='myBtn' type='button' onclick='instructions();'>Help</button>
 	</form>
+	
+	<!-- The Modal -->
+<div id='myModal' class='modal'>
+
+  <!-- Modal content -->
+  <div class='modal-content'>
+    <span class='close'>&times;</span>
+    <p><b>Directions:</b> Choose an online CS course in the dropdown menu. Then, rate that course's difficulty (0 being VERY easy, 5 being VERY hard), the quality of online lectures provided for that course (0 being VERY poor, 5 being VERY excellent), and how much that course depends on the mastery of material from prior courses (0 being VERY unreliant on past material, 5 being VERY reliant.).</p>
+  </div>
+
+</div>
 	</div></div>";
+	
+	echo "<script type='text/javascript'>
+		function instructions()
+		{
+			console.log('here');
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById('myBtn');
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName('close')[0];
+
+			// When the user clicks on the button, open the modal 
+			btn.onclick = function() {
+				modal.style.display = 'block';
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = 'none';
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = 'none';
+				}
+			}
+		}
+					</script>
+	"
 
 ?>
