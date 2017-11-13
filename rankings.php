@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home</title>
+		<title>Course Classifications</title>
 		<link rel="stylesheet" href="index.css">
 	</head>
 <body>
@@ -66,7 +66,10 @@
 	$result = mysqli_query($conn, $sql);
 	
 	// Grab the courses that are above average in difficulty.
-	$sql = "SELECT DISTINCT Course_Title FROM CourseStatsFinal CSF WHERE CSF.Classification = 'Hard'";
+	$sql1 = "CREATE VIEW HardClasses AS SELECT DISTINCT Course_Title FROM CourseStatsFinal CSF WHERE CSF.Classification = 'Hard'";
+	$sql = "SELECT Course_Title FROM HardClasses";	
+
+	$result1 = mysqli_query($conn, $sql1);
 	$result = mysqli_query($conn, $sql);
 	
 	$hardClasses = Array();
@@ -79,7 +82,10 @@
 	}
 	
 	// Grab the courses that are below average in difficulty.
-	$sql = "SELECT DISTINCT Course_Title FROM CourseStatsFinal CSF WHERE CSF.Classification = 'Easy'";
+	$sql2 = "CREATE VIEW EasyClasses AS SELECT DISTINCT Course_Title FROM CourseStatsFinal CSF WHERE CSF.Classification = 'Easy'";
+	$sql = "SELECT Course_Title from EasyClasses";
+
+	$result1 = mysqli_query($conn, $sql2);
 	$result = mysqli_query($conn, $sql);
 	
 	$easyClasses = Array();
@@ -112,4 +118,9 @@
 	}
 		
 	echo "</ul>";
+
+	$killView1 = "DROP VIEW HardClasses";
+	$killView2 = "DROP VIEW EasyClasses";
+	$killResult1 = mysqli_query($conn, $killView1);
+	$killResult2 = mysqli_query($conn, $killView2);
 ?>

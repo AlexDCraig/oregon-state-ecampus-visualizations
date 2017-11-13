@@ -3,7 +3,6 @@
 
 <html>
 	<head>
-		<title>Discussion Board</title>
 		<link rel="stylesheet" href="index.css">
 	</head>
 <body>
@@ -95,6 +94,8 @@
 
 		$_SESSION['dbid'] = $discBoardID;
 		$_SESSION['coursetitle'] = $selectedClass;
+
+		echo "<title>$selectedClass Discussion</title>";
 
 		echo "<h3>Discussion Board for $selectedClass</h3>";
 

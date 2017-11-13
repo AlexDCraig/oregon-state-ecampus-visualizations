@@ -59,12 +59,15 @@
 		die('Could not connect: ' . mysql_error());
 	}
 
-	$sql = "SELECT Title FROM CourseFinal";
-	$result = mysqli_query($conn, $sql);
+	$sql1 = "CREATE VIEW PossibleCourses AS SELECT Title FROM CourseFinal";
+	$sql2 = "SELECT TITLE FROM PossibleCourses";
+	$result1 = mysqli_query($conn, $sql1);
+	$result2 = mysqli_query($conn, $sql2);
+
 	echo "<div align='center'><div style='margin:auto; width: 50%; float: center; align:right'>
 	<form action='discuss.php' method='post'>
 	<select name='onlineClass'>";
-	while($row = mysqli_fetch_assoc($result))
+	while($row = mysqli_fetch_assoc($result2))
 	{
 		echo "<option value='" . $row["Title"];
 		echo "'>" . $row["Title"];
@@ -76,5 +79,7 @@
 	<input type='submit' name='submit' value='Go to board' />
 	</form>
 	</div></div>";
-	
+
+	$sql3 = "DROP VIEW PossibleCourses";
+	$result3 = mysqli_query($conn, $sql3);	
 ?>
