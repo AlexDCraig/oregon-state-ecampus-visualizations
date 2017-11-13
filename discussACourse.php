@@ -82,4 +82,9 @@
 
 	$sql3 = "DROP VIEW PossibleCourses";
 	$result3 = mysqli_query($conn, $sql3);	
+
+	mysqli_free_result($result1);
+	mysqli_free_result($result2);
+	mysqli_free_result($result3);
+	mysqli_close($conn);
 ?>

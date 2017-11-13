@@ -179,6 +179,7 @@
 			}
 		}
 					</script>
-	"
+	";
 
+	mysqli_close($conn);
 ?>

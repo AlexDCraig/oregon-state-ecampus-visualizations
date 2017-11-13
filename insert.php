@@ -44,5 +44,6 @@
 		echo $error;
 	}
 
+	mysqli_free_result($query);
 	mysqli_close($conn);
 ?>

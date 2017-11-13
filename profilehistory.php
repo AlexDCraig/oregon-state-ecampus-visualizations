@@ -155,4 +155,6 @@
 	else
 		echo "<h4 align='center'>You're not logged in. Click on account and then log in to do so.</h4>";
 
+	mysqli_free_result($result);
+	mysqli_close($conn);
 ?>

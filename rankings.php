@@ -123,4 +123,5 @@
 	$killView2 = "DROP VIEW EasyClasses";
 	$killResult1 = mysqli_query($conn, $killView1);
 	$killResult2 = mysqli_query($conn, $killView2);
+	mysqli_close($conn);
 ?>

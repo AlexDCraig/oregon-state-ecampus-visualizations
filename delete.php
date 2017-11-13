@@ -79,4 +79,6 @@
 		echo "<h3 align='center'>That comment belongs to $emailOfPoster. If you wish to delete it, either ask him or log on to his account.</h3>";
 	}
 
+	mysqli_free_result($result);
+	mysqli_close($conn);	
 ?>

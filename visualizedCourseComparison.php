@@ -88,5 +88,7 @@
 	</form>
 	</div>
 	</div></div>";
+
+	mysqli_close($conn);
 ?>
 
